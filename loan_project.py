@@ -12,7 +12,7 @@ from forms import user_details
 import pandas as pd
 
 app = Flask(__name__)
-# model = pickle.load(open('model.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 # mydb = mysql.connector.connect(
 #     host="localhost",
@@ -62,7 +62,7 @@ def details():
                 res_df["Credit_History"] = [Credit_History]
                 res_df["Property_Area"] = [Property_Area]
                 user_data = res_df
-                test_sample = pd.read_csv(r'C:\Users\mites\test_sample.csv')
+                test_sample = pd.read_csv(r'test_sample.csv')
                 test_sample = test_sample.iloc[:,1:]
                 df = test_sample.append(user_data)
                 df["TotalIncome"] = df["ApplicantIncome"] + df["CoapplicantIncome"]
@@ -101,8 +101,8 @@ def details():
                 target = target.iloc[:,1:]
                 #
 #                 model = LogisticRegression(C=0.01, class_weight=0.01, solver='newton-cg')
-                model = ExtraTreesClassifier(max_features=5, min_samples_leaf=20, min_samples_split=30, n_estimators=300)
-                model.fit(train_data, target)
+#                 model = ExtraTreesClassifier(max_features=5, min_samples_leaf=20, min_samples_split=30, n_estimators=300)
+#                 model.fit(train_data, target)
                 pred = model.predict(predict_user_data)
                 pred_proba = model.predict_proba(predict_user_data)
                 if pred[0] == 'Y':
