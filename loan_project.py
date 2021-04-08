@@ -138,7 +138,7 @@ def details():
                 # print(res_df.shape)
                 return redirect(url_for('details'))
 
-#     app.secret_key = '8866104644'
+    app.secret_key = '8866104644'
     return render_template('detail.html', title='Details', form=formdata)
 
 if __name__ == '__main__':
