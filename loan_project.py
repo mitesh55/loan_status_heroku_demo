@@ -6,7 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import ExtraTreesClassifier
 import numpy as np
 import pandas as pd
-import mysql.connector
+# import mysql.connector
 from flask import Flask, render_template, request, flash, redirect, url_for , session
 from forms import user_details
 import pandas as pd
@@ -14,14 +14,14 @@ import pandas as pd
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="",
-    database="bank_db"
-)
+# mydb = mysql.connector.connect(
+#     host="localhost",
+#     user="root",
+#     passwd="",
+#     database="bank_db"
+# )
 
-mycursor = mydb.cursor()
+# mycursor = mydb.cursor()
 
 app.secret_key='123456789'
 @app.route('/')
@@ -42,9 +42,9 @@ def details():
                 Loan_Amount = float(request.form['loan_amount'])
                 Loan_Amount_Term = float(request.form['loan_amount_term'])
 
-                sql="INSERT INTO `applicant_detail`(`Applicant_name`,`Gender`,`Married`,`Dependents`,`Education`,`Self_Employed`,ApplicantIncome,CoapplicantIncome,LoanAmount,Loan_Amount_Term,Credit_History,`Property_Area`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-                data = (applicant_name,Gender,Married,Dependents,Education,Self_Employed,ApplicantIncome,CopplicantIncome,Loan_Amount,Loan_Amount_Term,Credit_History,Property_Area)
-                mycursor.execute(sql, data)
+#                 sql="INSERT INTO `applicant_detail`(`Applicant_name`,`Gender`,`Married`,`Dependents`,`Education`,`Self_Employed`,ApplicantIncome,CoapplicantIncome,LoanAmount,Loan_Amount_Term,Credit_History,`Property_Area`) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+#                 data = (applicant_name,Gender,Married,Dependents,Education,Self_Employed,ApplicantIncome,CopplicantIncome,Loan_Amount,Loan_Amount_Term,Credit_History,Property_Area)
+#                 mycursor.execute(sql, data)
                 #mydb.commit()
 
                 res_df = pd.DataFrame()
