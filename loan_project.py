@@ -109,10 +109,10 @@ def details():
                     pred = 'YES'
                 else:
                     pred = 'NO'
-                print("Loan Status :", pred)
+#                 print("Loan Status :", pred)
                 n_prob = pred_proba[0][0] * 100
                 y_prob = pred_proba[0][1] * 100
-                print("Chance of getting loan :", y_prob)
+#                 print("Chance of getting loan :", y_prob)
 #                 print(n_prob)
 #                 print(user_emi[0])
                 # print(pred_proba[0][0])
