@@ -1,0 +1,294 @@
+img
+{
+    width:100%;
+    height:250px;
+}
+.add
+{
+    width:300px;
+    height:40px;
+    margin-bottom:20px;
+}
+.add hover
+{
+    background-color:white;
+    color:black;
+    border-radius:20px lightgreen;
+}
+.btn-size
+{
+    width:100px;
+    align:left;
+}
+.progress {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+.demo
+{
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px 5px #AED2BC;
+}
+.ovel
+{
+    margin-left:50px;
+}
+.progress::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 10px solid green;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress .progress-left {
+  left: 5;
+}
+.round
+{
+    height:100px;
+    width:100px;
+    text-align:center;
+    padding-top:30px;
+    border-radius: 50%;
+    margin-left:20px;
+    background-color:green;
+}
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 10px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress .progress-right {
+  right: 0;
+}
+
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.flexcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  align-items: baseline;
+  height: 400px;
+  border-radius: 20px;
+}
+
+.flexcardNumber {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin: 10px 0px;
+  border-radius: 0px 50px 50px 0px;
+  font-family: 'Jost', sans-serif;
+  color: white;
+  text-shadow: 0px 3px 5px black;
+  font-weight: 500;
+  font-size: 20px;
+  position: relative;
+}
+
+.flexcardTitle {
+  font-family: 'Jost', sans-serif;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.flexcardText {
+  font-family: 'Jost', sans-serif;
+  text-align: center;
+  font-weight: 300;
+}
+
+.flexcardNumber:before {
+  content: '';
+  width: 34px;
+  height: 90px;
+  position: absolute;
+  left: -33px;
+  top: 0px;
+  border-radius: 50px 0px 0px 50px;
+  z-index: -1;
+/* background: #95B7A2; *//* background: -webkit-linear-gradient(bottom, #95B7A2, #AED2BC); */
+  background: -moz-linear-gradient(bottom, #95B7A2, #AED2BC);
+/* background: linear-gradient(to top, #95B7A2, #AED2BC); */;
+}
+
+.flexcardNumber:after {
+  content: '';
+  width: 25px;
+  height: 40px;
+  position: absolute;
+  left: -25px;
+  bottom: -40px;
+  border-radius: 50px 0px 0px 50px;
+  z-index: -1;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px auto;
+}
+
+img.flexcardimgItem {
+  width: 50%;
+}
+
+/* GREEN CARD */
+
+.flexcardGreen {
+  background: #f9fbfa;
+  box-shadow: 4px 4px 4px #AED2BC;
+}
+
+.flexcardNumberGreen {
+  background: #FCFCFC;
+  background: -webkit-linear-gradient(right, #FCFCFC, #AED2BC);
+  background: -moz-linear-gradient(right, #FCFCFC, #AED2BC);
+  background: linear-gradient(to left, #FCFCFC, #AED2BC);
+  box-shadow: 0px 2px 2px #AED2BC;
+}
+
+.flexcardNumberGreen:before {
+  background: #AED2BC;
+}
+
+.flexcardNumberGreen:after {
+  background: #95b7a2;
+}
+
+/* BLUE CARD */
+
+.flexcardBlue {
+  background: #f7ffff;
+ box-shadow: 4px 8px 1px #92E8EB;
+}
+
+.flexcardNumberBlue {
+  background: #FDFFFE;
+  background: -webkit-linear-gradient(right, #FDFFFE, #92E8EB);
+  background: -moz-linear-gradient(right, #FDFFFE, #92E8EB);
+  background: linear-gradient(to left, #FDFFFE, #92E8EB);
+  box-shadow: 0px 2px 2px #92E8EB;
+}
+
+.flexcardNumberBlue:before {
+  background: #92E8EB;
+}
+
+.flexcardNumberBlue:after {
+  background: #71bdbf;
+}
+
+/* ORANGE CARD */
+
+.flexcardOrange {
+  background: #fdf8f3;
+ box-shadow: 4px -2px 1px #F68404;
+}
+
+.flexcardNumberOrange {
+  background: #FDFFFE;
+  background: -webkit-linear-gradient(right, #FDFFFE, #F68404);
+  background: -moz-linear-gradient(right, #FDFFFE, #F68404);
+  background: linear-gradient(to left, #FDFFFE, #F68404);
+  box-shadow: 0px 2px 2px #F68404;
+}
+
+.flexcardNumberOrange:before {
+  background: #F68404;
+}
+
+.flexcardNumberOrange:after {
+  background: #d06f02;
+}
+
+/* PİNK CARD */
+
+.flexcardPink {
+  background: #fffafd;
+  position: relative;
+    box-shadow: 2px 2px 1px #F34EAE ;
+    border-radius: 20px 20px 0px 20px;
+}
+.flexcardPink:before {
+    content: '';
+    width: 0px;
+    height: 50px;
+    /* background: red; */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-left: 100px solid transparent;
+    border-bottom: 90px solid #F34EAE;
+}
+.flexcardNumberPink {
+  background: #FDFFFE;
+  background: -webkit-linear-gradient(right, #FDFFFE, #F34EAE);
+  background: -moz-linear-gradient(right, #FDFFFE, #F34EAE);
+  background: linear-gradient(to left, #FDFFFE, #F34EAE);
+  box-shadow: 0px 2px 2px #F34EAE;
+}
+
+.flexcardNumberPink:before {
+  background: #F34EAE;
+}
+
+.flexcardNumberPink:after {
+  background: #d24095;
+}
