@@ -139,7 +139,7 @@ def details():
                 return redirect(url_for('details'))
 
     app.secret_key = '8866104644'
-    return render_template('detail.html', title='Details', form=formdata)
+    return render_template('test.html', title='Details', form=formdata)
 
 if __name__ == '__main__':
     app.run(debug=True)
