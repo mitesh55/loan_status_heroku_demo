@@ -12,7 +12,7 @@ from forms import user_details
 import pandas as pd
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
+# model = pickle.load(open('model.pkl', 'rb'))
 
 # mydb = mysql.connector.connect(
 #     host="localhost",
@@ -94,15 +94,15 @@ def details():
                 final_data = final_data.drop("EMI", axis=1)
                 predict_user_data = final_data.tail(1)
                 user_emi = ((np.exp(predict_user_data["EMI_log"]))/100)*2
-                # train_data = pd.read_csv(r'C:\Users\mites\loan_train_data.csv')
-                # train_data = train_data.iloc[:,1:]
-                # train_data["EMI_log"] = ((np.exp(train_data["EMI_log"]))/100)*2
-                # target = pd.read_csv(r'C:\Users\mites\loan_target.csv')
-                # target = target.iloc[:,1:]
+                train_data = pd.read_csv(r'C:\Users\mites\loan_train_data.csv')
+                train_data = train_data.iloc[:,1:]
+                train_data["EMI_log"] = ((np.exp(train_data["EMI_log"]))/100)*2
+                target = pd.read_csv(r'C:\Users\mites\loan_target.csv')
+                target = target.iloc[:,1:]
                 #
-                # model = LogisticRegression(C=0.01, class_weight=0.01, solver='newton-cg')
-                # model = ExtraTreesClassifier(max_features=5, min_samples_leaf=20, min_samples_split=30, n_estimators=300)
-                # model.fit(train_data, target)
+#                 model = LogisticRegression(C=0.01, class_weight=0.01, solver='newton-cg')
+                model = ExtraTreesClassifier(max_features=5, min_samples_leaf=20, min_samples_split=30, n_estimators=300)
+                model.fit(train_data, target)
                 pred = model.predict(predict_user_data)
                 pred_proba = model.predict_proba(predict_user_data)
                 if pred[0] == 'Y':
