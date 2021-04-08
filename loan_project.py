@@ -113,11 +113,11 @@ def details():
                 n_prob = pred_proba[0][0] * 100
                 y_prob = pred_proba[0][1] * 100
                 print("Chance of getting loan :", y_prob)
-                print(n_prob)
-                print(user_emi[0])
+#                 print(n_prob)
+#                 print(user_emi[0])
                 # print(pred_proba[0][0])
                 # print(pred_proba[0][1])
-                user_display = {'y_prob' : y_prob, 'n_prob' : n_prob, 'user_emi' : user_emi, 'loan_status' : pred}
+#                 user_display = {'y_prob' : y_prob, 'n_prob' : n_prob, 'user_emi' : user_emi, 'loan_status' : pred}
 
                 session['y_prob']=round(y_prob,2)
                 session['n_prob']=round(n_prob,2)
