@@ -99,6 +99,7 @@ def details():
             session['y_prob']=round(y_prob,2)
             session['n_prob']=round(n_prob,2)
             session['user_emi']=user_emi[0]
+            session['pred']=pred
 
                    
             return redirect(url_for('details'))
