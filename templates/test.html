@@ -1,0 +1,335 @@
+
+
+<!doctype html>
+<html>
+   <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="type/javascript" href="{{ url_for('static', filename='js/main.js') }}">
+
+   </head>
+   <body>
+   <div class="main-content">
+      <div class="header">
+         <img src="/static/images/sync1.jpg" alt="image">
+      </div>
+
+      <!-- left Content -->
+      <div class="d-md-flex h-md-100 align-items-center">
+         <div class="col-md-6 p-0 bg-indigo h-md-100">
+            <div class="flexbox">
+                <div class="flexcard flexcardGreen taskleft">
+                    <div class="flexcardNumber flexcardNumberGreen">&nbsp;</div>
+                    <div class="flex flexcardTitle">Bank </div>
+                    <div class="flex flexcardText"><p>&nbsp;&nbsp;&nbsp;The Perfect link between you and your desire. <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;Minimum interest rate starts at 7.5% only.<br>
+                        To check for loan approval status<br>
+                        Fill the details below </p>
+                    </div>
+                    <div class="flex flexcardImg">
+                        <div class="d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+                             <div class="logoarea pt-5 pb-5">
+                                 <!-- Button to Open the Modal -->
+                                  <button type="button" class="btn btn-primary add " data-toggle="modal" data-target="#myModal">
+                                      Add details
+                                  </button>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+         </div>
+         <!-- Right Content-->
+         <div class="col-md-6 p-0 bg-white h-md-100 loginarea ovel">
+             <div class="d-md-flex align-items-center h-md-100 p-5 justify-content-center">
+
+             <div class="col-xl-8 col-lg-6 mb-4">
+               <div class="bg-white rounded-lg p-5 demo">
+                 <h3 class="font-weight-bold text-center mb-4">Loan Status Progress </h3>
+
+                 <!-- Progress bar 1 -->
+                 <div class="progress mx-auto" data-value='80'>
+                   <span class="progress-left">
+                                 <span class="progress-bar border-primary"></span>
+                   </span>
+                   <span class="progress-right">
+                                 <span class="progress-bar border-primary"></span>
+                   </span>
+                   <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                            {% if session.y_prob %}
+                     <div class="h2 font-weight-bold">{{session.y_prob}}<sup class="small">%</sup></div>
+                             {%else %}
+                                 <div class="h2 font-weight-bold"><sup class="small"></sup></div>
+                            {% endif %}
+                   </div>
+                 </div>
+                 <!-- END -->
+
+                 <!-- Demo info -->
+                 <div class="row text-center mt-4">
+                   <div class="col-6 border-right">
+                       {% if session.y_prob %}
+                     <div class="h4 font-weight-bold mb-0">{{session.n_prob}}%</div><span class="large text-gray">No</span>
+                       {%else %}
+                       <div class="h4 font-weight-bold mb-0">0%</div><span class="large text-gray">No</span>
+                       {% endif %}
+                   </div>
+                   <div class="col-6">
+                       {% if session.y_prob %}
+                     <div class="h4 font-weight-bold mb-0">{{session.y_prob}}%</div><span class="large text-gray">Yes</span>
+                       {%else %}
+                       <div class="h4 font-weight-bold mb-0">0%</div><span class="large text-gray ">Yes</span>
+                       {% endif %}
+                   </div>
+                 </div>
+                 <!-- END -->
+               </div>
+          </div></div>
+         </div>
+
+     </div>
+       {% if session.nag %}
+         <div class="alert alert-danger" role="alert">
+                {{session.nag}}
+         </div>
+       {% endif %}
+
+      <!-- The Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Applicant Details</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+               {% for message in form.applicant_name.errors %}
+                  <div>{{ message }}</div>
+               {% endfor %}
+
+            <form action = "/page" method = post>
+               <fieldset>
+
+                  {{ form.hidden_tag() }}
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+                     {{ form.applicant_name.label(class="form-control-label") }}<br>
+                     {% if form.applicant_name.errors %}
+                        {{ form.applicant_name(class="form-control form-control-lg is-invalid")}}
+                        <div class="invalid-feedback">
+                           {% for error in form.applicant_name.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                        </div>
+                     {% else %}
+                              {{ form.applicant_name(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.gender.label(class="form-control-label") }}<br>
+                     {% if form.gender.errors %}
+                      {{ form.gender(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.gender.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.gender(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.married.label(class="form-control-label") }}<br>
+                     {% if form.married.errors %}
+                      {{ form.married(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.married.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.married(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.dependents.label(class="form-control-label") }}<br>
+                     {% if form.dependents.errors %}
+                      {{ form.dependents(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.dependents.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.dependents(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.education.label(class="form-control-label") }}<br>
+                     {% if form.education.errors %}
+                      {{ form.education(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.education.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.education(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.self_employed.label(class="form-control-label") }}<br>
+                     {% if form.self_employed.errors %}
+                      {{ form.self_employed(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.self_employed.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.self_employed(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.credit_history.label(class="form-control-label") }}<br>
+                     {% if form.credit_history.errors %}
+                      {{ form.credit_history(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.credit_history.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.credit_history(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.property_area.label(class="form-control-label") }}<br>
+                     {% if form.property_area.errors %}
+                      {{ form.property_area(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.property_area.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.property_area(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.applicant_income.label(class="form-control-label") }}<br>
+                     {% if form.applicant_income.errors %}
+                      {{ form.applicant_income(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.applicant_income.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.applicant_income(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.Coapplicant_income.label(class="form-control-label") }}<br>
+                     {% if form.Coapplicant_income.errors %}
+                      {{ form.Coapplicant_income(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.Coapplicant_income.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.Coapplicant_income(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.loan_amount.label(class="form-control-label") }}<br>
+                     {% if form.loan_amount.errors %}
+                      {{ form.loan_amount(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.loan_amount.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+                     {% else %}
+                              {{ form.loan_amount(class="form-control form-control") }}
+                     {% endif %}
+                     <br>
+                  </div>
+
+                  <div style = font-size:20px; font-weight:bold; margin-left:150px; height:50px;>
+
+                     {{ form.loan_amount_term.label(class="form-control-label") }}<br>
+                     {% if form.loan_amount_term.errors %}
+                      {{ form.loan_amount_term(class="form-control form-control") }}
+                      <div class="invalid-feedback">
+                           {% for error in form.loan_amount_term.errors %}
+                              <span>{{ error }}</span>
+                           {% endfor %}
+                      </div>
+
+                     {% else %}
+                              {{ form.loan_amount_term(class="form-control form-control") }}
+                     {% endif %}
+
+                     <br>
+                  </div>
+
+
+                   <!-- Modal footer -->
+                  <div class="modal-footer">
+                       {{ form.submit(class="btn btn-primary btn-size text-center") }}
+                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+            </fieldset>
+         </form>
+      </div></div>
+        </div>
+      </div>
+   </div>
+   </body>
+</html>
